@@ -10,6 +10,7 @@
         <isset property="env.ARCHIVE_DIR" />
     </condition>
     <property name="warname" value= "JavaHelloWorldApp.war"/>
+	<property name="ECLIPSE_HOME" value="D:/Softwares/eclipse-jee-neon-1a-win32-x86_64/eclipse/"/>
     
 	<path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
 	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/annotations-api.jar"/>
