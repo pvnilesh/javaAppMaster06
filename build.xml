@@ -11,6 +11,7 @@
     </condition>
     <property name="warname" value= "JavaHelloWorldApp.war"/>
 	<property name="ECLIPSE_HOME" value="D:/Softwares/eclipse-jee-neon-1a-win32-x86_64/eclipse/"/>
+	<property name="classDir" value="build/classes"/>
     
 	<path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
 	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/annotations-api.jar"/>
@@ -63,14 +64,14 @@
 	-->
 	
 	<target name="clean">
-        <delete dir="build/classes"/>
+        <delete dir="${classDir}"/>
 		<!-- <delete dir="lib"/> -->
 		<delete dir="reports"/>
 		<delete file="${ARCHIVE_DIR}/${warname}" />		
     </target>
 	
     <target name="init" depends="clean">
-    	<mkdir dir="build/classes"/>
+    	<mkdir dir="${classDir}"/>
 		<!-- <mkdir dir="lib" /> -->
 	    <mkdir dir="reports" />
     </target>
@@ -88,7 +89,7 @@
 	      <fileset file="manifest.yml" />
 	    </copy>
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}"
+        <javac debug="true" debuglevel="${debuglevel}" destdir="${classDir}" source="${source}" target="${target}"
 		includeantruntime="false">
             <src path="${srcDir}"/>
             <classpath refid="JavaAppMaster06.classpath"/>
@@ -112,7 +113,7 @@
 	  	<fileset dir="WebContent">
 	  		<include name="**/*"/>
 	    </fileset>
-	  	<classes dir="bin"/>
+	  	<classes dir="${classDir}"/>
 	  </war>
    </target>
 	
