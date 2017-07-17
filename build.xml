@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="build" name="Java Hello World Web Starter">
+    <property environment="env"/>
+    <property name="srcDir" value="src"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <condition property="ARCHIVE_DIR" value="${env.ARCHIVE_DIR}" else=".">
+        <isset property="env.ARCHIVE_DIR" />
+    </condition>
+    <property name="warname" value= "JavaHelloWorldApp.war"/>
+    
+	<path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/annotations-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/catalina-ant.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/catalina-ha.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/catalina-storeconfig.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/catalina-tribes.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/catalina.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/ecj-4.5.1.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/el-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/jasper-el.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/jasper.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/jaspic-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/jsp-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/servlet-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-api.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-coyote.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-dbcp.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-i18n-es.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-i18n-fr.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-i18n-ja.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-jdbc.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-jni.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-util-scan.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-util.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/tomcat-websocket.jar"/>
+	        <pathelement location="D:/Softwares/apache-tomcat-8.5.11-windows-x64/apache-tomcat-8.5.11/lib/websocket-api.jar"/>
+	    </path>
+	    <path id="Web App Libraries.libraryclasspath"/>
+	    <path id="EAR Libraries.libraryclasspath"/>
+	    <path id="JUnit 4.libraryclasspath">
+	        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.12.0.v201504281640/junit.jar"/>
+	        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+	    </path>
+	    <path id="JavaAppMaster06.classpath">
+	        <pathelement location="build/classes"/>
+	        <path refid="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath"/>
+	        <path refid="Web App Libraries.libraryclasspath"/>
+	        <path refid="EAR Libraries.libraryclasspath"/>
+	        <path refid="JUnit 4.libraryclasspath"/>
+	    </path>
+	
+	<!--
+	<path id="classpathDir">
+      <path location="lib">
+	    <fileset dir="lib" includes="*.jar" />
+	  </path>
+	  <path location="build" />
+    </path>
+	-->
+	
+	<target name="clean">
+        <delete dir="build/classes"/>
+		<!-- <delete dir="lib"/> -->
+		<delete dir="reports"/>
+		<delete file="${ARCHIVE_DIR}/${warname}" />		
+    </target>
+	
+    <target name="init" depends="clean">
+    	<mkdir dir="build/classes"/>
+		<!-- <mkdir dir="lib" /> -->
+	    <mkdir dir="reports" />
+    </target>
+	
+    <!--	
+	<target name="copy" depends="init">
+      <copy overwrite="true" todir="lib">
+	    <fileset dir="D:\junit-4.12" includes="*.jar" />
+	  </copy>
+    </target>
+	-->
+	
+	<target name="build-project" depends="init">
+    	<copy todir="${ARCHIVE_DIR}">
+	      <fileset file="manifest.yml" />
+	    </copy>
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" source="${source}" target="${target}"
+		includeantruntime="false">
+            <src path="${srcDir}"/>
+            <classpath refid="JavaAppMaster06.classpath"/>
+        </javac>
+    </target>
+	
+	<target name="run-junit" depends="build-project">
+     <!-- <java classpathref="classpath" classname="MyTestRunner" /> -->
+      <junit haltonfailure="false" printsummary="true">
+        <classpath refid="JavaAppMaster06.classpath" />
+	    <test name="com.devops.test.MyClassTest" todir="reports" />
+	    <formatter type="xml" />
+      </junit>
+    </target>
+	
+	<target name="build-war" depends="run-junit">
+	  <war destfile="${ARCHIVE_DIR}/${warname}" webxml="WebContent/WEB-INF/web.xml">
+	  	<webinf dir="WebContent/WEB-INF">
+	  		<include name="resources"/>
+	    </webinf>
+	  	<fileset dir="WebContent">
+	  		<include name="**/*"/>
+	    </fileset>
+	  	<classes dir="bin"/>
+	  </war>
+   </target>
+	
+    <target name="build" depends="build-war"/>
+	
+</project>
